@@ -14,11 +14,6 @@ dataRouter.get("/", async (req, res, next) => {
     if (data) {
       res.send(data);
     }
-
-    const user = await NonUsersModel.findById(req.params.id);
-    if (!user)
-      return next(createError(404, `User with id ${req.params.id} not found!`));
-    res.send(user);
   } catch (error) {
     console.log(error);
     next(error);
